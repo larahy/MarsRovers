@@ -45,14 +45,14 @@ describe Rover do
 			rover.move
 			rover.turn("L")
 			rover.move
-			expect(rover.x).to eq(2)
+			expect(rover.x).to eq(0)
 			expect(rover.y).to eq(3)
 		end
 
 	end
 
 	context 'interpreting the input' do
-
+	end
 
 end
 
