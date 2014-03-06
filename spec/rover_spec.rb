@@ -33,18 +33,18 @@ describe Rover do
 
 	end
 
-	context 'moving location Rover#move' do 
+	context 'moving location Rover#M' do 
 
 		it 'should be able to move once' do 
-			rover.move
+			rover.M
 			expect(rover.x).to eq(1)
 			expect(rover.y).to eq(3)
 		end
 
 		it 'should be able to move, change direction, and move again' do 
-			rover.move
+			rover.M
 			rover.turn("L")
-			rover.move
+			rover.M
 			expect(rover.x).to eq(0)
 			expect(rover.y).to eq(3)
 		end
@@ -52,6 +52,13 @@ describe Rover do
 	end
 
 	context 'interpreting the input' do
+
+		it 'should take loadsa input' do 
+			rover.course('MLM')
+			expect(rover.x).to eq(0)
+			expect(rover.y).to eq(3)
+		end
+
 	end
 
 end

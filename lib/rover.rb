@@ -27,7 +27,7 @@ class Rover
 		end
 	end
 
-	def move
+	def M
 		if @facing == "N"
 			@y += 1
 		elsif @facing == "E"
@@ -39,5 +39,29 @@ class Rover
 		end
 	end
 
+	def L
+		turn("L")
+	end
 
+	def R
+		turn("R")
+	end
+
+	def course(line3)
+		line3.split(//).each do |cmd|
+			self.send cmd
+		end
+	end
+
+
+	# loop do 
+	# 	begin 
+	# 		print "Hello Nasa ;) Please enter the upper right coordinates of the plateau?"
+	# 		layout = gets.chomp
+	# 		print "Please enter the coordinates and direction of your first Rover in the format 'X coordinate, Y coordinate, compass direction'. For example '1 2 N'"
+	# 		line2 = gets.chomp
+	# 		print "Please enter the course you would like your Rover to take in the format 'TURN MOVE', where a left turn is represented by an 'L' and a right turn is represented by a 'R'.  For example 'LMLMLMLMM'"
+	# 		line3 = gets.chomp
+	# 		print "If you have any more Rovers please enter the coordinates here "
+	# 	end
 end
