@@ -5,9 +5,11 @@ describe Rover do
 
 	let (:line1) {"5 5"}
 	let (:line2) {"1 2 N"}
-	let (:line3) {"LMLMLMLMM"}
+	let (:inquisitive) {"5 5 N"}
+	let (:instructions) {"LMLMLMLMM"}
 	let (:mars) {Mars.new(line1)}
 	let (:rover) {Rover.new(line2)}
+	let (:inquisitiverover) {Rover.new(inquisitive)}
 
 	context 'initial placement' do 
 
@@ -48,6 +50,11 @@ describe Rover do
 			expect(rover.x).to eq(0)
 			expect(rover.y).to eq(3)
 		end
+
+		# it 'should know if a location is off piste' do 
+		# 	inquisitiverover.M
+		# 	expect(inquisitiverover.off_piste?).to raise_error(RuntimeError)
+		# end
 
 	end
 

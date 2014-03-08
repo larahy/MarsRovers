@@ -1,11 +1,14 @@
+require 'satellite'
+
 class Mars 
 
 	attr_reader :plateau
 
-	def initialize(line1)
-		y = line1.split[1].to_i
-		x = line1.split[0].to_i
-		@plateau = Array.new(y) {Array.new(x)}
+	def initialize(boundaries)
+		@yboundary = boundaries.split[1].to_i
+		@xboundary = boundaries.split[0].to_i
+		@plateau = Array.new(@yboundary) {Array.new(@xboundary)}
 	end
+
 
 end

@@ -4,18 +4,10 @@ class Rover
 	attr_accessor :x, :y, :facing
 	COMPASS = ["N", "E", "S", "W"]
 
-	def initialize(line2)
-		@x = start_coordinates(line2).first.to_i
-		@y = start_coordinates(line2).last.to_i
-		@facing = start_direction(line2)
-	end
-
-	def start_coordinates(line2)
-		line2.split.take(2)
-	end
-
-	def start_direction(line2)
-		line2.split.last
+	def initialize(start_data)
+		@x = start_data.split.take(2).first.to_i
+		@y = start_data.split.take(2).last.to_i
+		@facing = start_data.split.last
 	end
 
 	def turn(direction)
@@ -47,21 +39,17 @@ class Rover
 		turn("R")
 	end
 
-	def course(line3)
-		line3.split(//).each do |cmd|
+	def course(instructions)
+		instructions.split(//).each do |cmd|
 			self.send cmd
 		end
 	end
 
+	# def off_piste?
+ #    if @x > @xboundary || @y > @yboundary
+ #    	raise "Mamma Mia, too hot to handle"
+ #    end
+	# end
 
-	# loop do 
-	# 	begin 
-	# 		print "Hello Nasa ;) Please enter the upper right coordinates of the plateau?"
-	# 		layout = gets.chomp
-	# 		print "Please enter the coordinates and direction of your first Rover in the format 'X coordinate, Y coordinate, compass direction'. For example '1 2 N'"
-	# 		line2 = gets.chomp
-	# 		print "Please enter the course you would like your Rover to take in the format 'TURN MOVE', where a left turn is represented by an 'L' and a right turn is represented by a 'R'.  For example 'LMLMLMLMM'"
-	# 		line3 = gets.chomp
-	# 		print "If you have any more Rovers please enter the coordinates here "
-	# 	end
+
 end
