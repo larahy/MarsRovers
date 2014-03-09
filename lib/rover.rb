@@ -15,7 +15,7 @@ class Rover
 		if direction == "L"
 			@facing = COMPASS[where_in_compass - 1]
 		else
-			@facing = COMPASS[where_in_compass + 1]
+			@facing = COMPASS.fetch(where_in_compass + 1, "N")
 		end
 	end
 
@@ -37,9 +37,6 @@ class Rover
 
 	def R
 		turn("R")
-	end
-
-	def /n
 	end
 
 	def route(instructions)

@@ -32,8 +32,8 @@ attr_reader :input
   def initialize_rovers
     @input.shift
     @input.each_slice(2) do |start_data, instructions|
-      rover = Rover.new(start_data)
-      rover.route("LMLMLMLMM")
+      rover = Rover.new(start_data.chomp)
+      rover.route(instructions.chomp)
       rovers << rover
     end
     rovers
