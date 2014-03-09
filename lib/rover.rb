@@ -39,7 +39,10 @@ class Rover
 		turn("R")
 	end
 
-	def course(instructions)
+	def /n
+	end
+
+	def route(instructions)
 		instructions.split(//).each do |cmd|
 			self.send cmd
 		end

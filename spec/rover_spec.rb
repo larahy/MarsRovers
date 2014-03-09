@@ -61,7 +61,7 @@ describe Rover do
 	context 'interpreting the input' do
 
 		it 'should take loadsa input' do 
-			rover.course('MLM')
+			rover.route('MLM')
 			expect(rover.x).to eq(0)
 			expect(rover.y).to eq(3)
 		end

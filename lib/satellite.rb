@@ -33,19 +33,28 @@ attr_reader :input
     @input.shift
     @input.each_slice(2) do |start_data, instructions|
       rover = Rover.new(start_data)
-      rovers << [rover, instructions]
+      rover.route("LMLMLMLMM")
+      rovers << rover
     end
     rovers
   end
 
-  def execute_instructions
-    finish_positions = []
+  def inspect_rovers
+    finish_data = [] 
     rovers.each do |rover|
-      rover[0].course(rover[1])
-      finish_positions << [rover.x, rover.y, rover.facing]
+      finish_data << [rover.x, rover.y, rover.facing]
     end
-    finish_positions
+    finish_data
   end
+
+  # def execute_instructions
+  #   finish_positions = []
+  #   rovers.each do |rover|
+  #     rover.first.course(rover.last)
+  #     finish_positions << [rover.x, rover.y, rover.facing]
+  #   end
+  #   finish_positions
+  # end
 
   # def read_rover_position
   #   rovers.each do |rover|

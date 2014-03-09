@@ -14,10 +14,15 @@ describe 'Satellite' do
     expect(satellite.rovercount).to eq(2)
   end
 
-  it 'should send rover instructions' do 
+  it 'should read final rover position and compass point' do 
     satellite.initialize_rovers
-    expect(satellite.execute_instructions).to eq([1, 3, "N"], [5, 1, "E"])
+    expect(satellite.inspect_rovers).to eq([[1,3,"N"],[5,1,"E"]])
   end
+
+  # it 'should send rover instructions' do 
+  #   satellite.initialize_rovers
+  #   expect(satellite.execute_instructions).to eq([1, 3, "N"], [5, 1, "E"])
+  # end
 
 
 end
