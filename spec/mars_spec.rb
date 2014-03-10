@@ -2,10 +2,8 @@ require 'mars'
 
 describe Mars do 
 
-	let (:line1) {"5 5"}
-	let (:line2) {"1 2 N"}
-	let (:line3) {"LMLMLMLMM"}
-	let (:mars) {Mars.new(line1)}
+	let (:limits) {"5 5"}
+	let (:mars) {Mars.new(limits)}
 
 	context 'upon initialization' do 
 
@@ -21,6 +19,10 @@ describe Mars do
 			expect(mars.plateau[0].count).to eq(5)
 		end
 		
+		it 'should know its limits' do 
+			expect(mars.yboundary).to eq(5)
+			expect(mars.xboundary).to eq(5)
+		end
 
 	end
 

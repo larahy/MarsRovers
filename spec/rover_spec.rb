@@ -3,14 +3,15 @@ require 'rover'
 
 describe Rover do 
 
-	let (:boundaries) {"5 5"}
+	let (:limits) {"5 5"}
 	let (:start_data1) {"1 2 N"}
 	let (:start_data2) {"3 3 E"}
 	let (:instructions1) {"LMLMLMLMM"}
 	let (:instructions2) {"MMRMMRMR"}
-	let (:mars) {Mars.new(boundaries)}
-	let (:rover1) {Rover.new(start_data1)}
-	let (:rover2) {Rover.new(start_data2)}
+	let (:poor_instructions) {"LMM"}
+	let (:mars) {Mars.new(limits)}
+	let (:rover1) {Rover.new(start_data1, limits)}
+	let (:rover2) {Rover.new(start_data2, limits)}
 
 	context 'initial placement' do 
 
@@ -25,7 +26,7 @@ describe Rover do
 
 	end
 
-	context 'changing direction' do 
+	context 'changing direction Rover#turn' do 
 
 		it 'should be able change direction' do
 			rover1.turn("R")
@@ -36,9 +37,9 @@ describe Rover do
 
 	end
 
-	context 'moving location Rover#M' do 
+	context 'moving coordinates Rover#M' do 
 
-		it 'should be able to move once' do 
+		it 'should be able to make single moves' do 
 			rover1.M
 			expect(rover1.x).to eq(1)
 			expect(rover1.y).to eq(3)
@@ -52,14 +53,14 @@ describe Rover do
 			expect(rover1.y).to eq(3)
 		end
 
-		# it 'should know if a location is off piste' do 
-		# 	inquisitiverover.M
-		# 	expect(inquisitiverover.off_piste?).to raise_error(RuntimeError)
-		# end
+		it 'should stay stationary until commands that do not take it off piste' do 
+			rover1.route(poor_instructions)
+			expect(rover1.x).to eq(0)
+		end
 
 	end
 
-	context 'interpreting the input' do
+	context 'interpreting several instructions Rover#route' do
 
 		it 'should take a series of instructions' do 
 			rover1.route(instructions1)

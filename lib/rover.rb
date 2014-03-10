@@ -4,7 +4,10 @@ class Rover
 	attr_accessor :x, :y, :facing
 	COMPASS = ["N", "E", "S", "W"]
 
-	def initialize(start_data)
+
+	def initialize(start_data, limits)
+		@yboundary = limits.split[1].to_i
+		@xboundary = limits.split[0].to_i
 		@x = start_data.split.take(2).first.to_i
 		@y = start_data.split.take(2).last.to_i
 		@facing = start_data.split.last
@@ -39,17 +42,28 @@ class Rover
 		turn("R")
 	end
 
-	def route(instructions)
-		instructions.split(//).each do |cmd|
-			self.send cmd
+	def reverse 
+		if @facing == "N"
+			@y -= 1
+		elsif @facing == "E"
+			@x -= 1
+		elsif @facing == "S"
+			@y += 1
+		else
+			@x += 1
 		end
 	end
 
-	# def off_piste?
- #    if @x > @xboundary || @y > @yboundary
- #    	raise "Mamma Mia, too hot to handle"
- #    end
-	# end
+	def route(instructions)
+		instructions.split(//).each do |cmd|
+			self.send cmd unless off_piste?
+			self.reverse if off_piste?
+		end
+	end
+
+	def off_piste?
+    @x > @xboundary || @y > @yboundary || @x < 0 || @y < 0
+	end
 
 
 end

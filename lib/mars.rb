@@ -2,7 +2,7 @@ require 'satellite'
 
 class Mars 
 
-	attr_reader :plateau
+	attr_reader :plateau, :yboundary, :xboundary
 
 	def initialize(boundaries)
 		@yboundary = boundaries.split[1].to_i

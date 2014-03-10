@@ -19,10 +19,9 @@ describe 'Satellite' do
     expect(satellite.inspect_rovers).to eq([[1,3,"N"],[5,1,"E"]])
   end
 
-  # it 'should send rover instructions' do 
-  #   satellite.initialize_rovers
-  #   expect(satellite.execute_instructions).to eq([1, 3, "N"], [5, 1, "E"])
-  # end
+  it 'should send final rover position and compass points back to Nasa' do 
+  end
+  
 
 
 end

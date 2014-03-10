@@ -9,7 +9,7 @@ attr_reader :input
     @input = input_data.lines
   end
 
-  def boundaries
+  def limits
     @input[0]
   end
 
@@ -30,9 +30,9 @@ attr_reader :input
   end
 
   def initialize_rovers
-    @input.shift
+    limits = @input.shift
     @input.each_slice(2) do |start_data, instructions|
-      rover = Rover.new(start_data.chomp)
+      rover = Rover.new(start_data.chomp, limits)
       rover.route(instructions.chomp)
       rovers << rover
     end
@@ -47,14 +47,7 @@ attr_reader :input
     finish_data
   end
 
-  # def execute_instructions
-  #   finish_positions = []
-  #   rovers.each do |rover|
-  #     rover.first.course(rover.last)
-  #     finish_positions << [rover.x, rover.y, rover.facing]
-  #   end
-  #   finish_positions
-  # end
+ 
 
   # def read_rover_position
   #   rovers.each do |rover|
