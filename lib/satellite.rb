@@ -13,14 +13,6 @@ attr_reader :input
     @input[0]
   end
 
-  # def start_data
-  #   @input[1]
-  # end
-
-  # def rover_count
-  #   @input.length / 2
-  # end
-
   def rovers
     @rovers ||= []
   end
@@ -46,14 +38,6 @@ attr_reader :input
     end
     finish_data
   end
-
- 
-
-  # def read_rover_position
-  #   rovers.each do |rover|
-  #   puts "#{rover.x} #{rover.y} #{rover.facing}"
-  #   end
-  # end
 
 
 end

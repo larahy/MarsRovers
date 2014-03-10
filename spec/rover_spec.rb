@@ -8,7 +8,7 @@ describe Rover do
 	let (:start_data2) {"3 3 E"}
 	let (:instructions1) {"LMLMLMLMM"}
 	let (:instructions2) {"MMRMMRMR"}
-	let (:poor_instructions) {"LMM"}
+	let (:poor_instructions) {"LMMLM"}
 	let (:mars) {Mars.new(limits)}
 	let (:rover1) {Rover.new(start_data1, limits)}
 	let (:rover2) {Rover.new(start_data2, limits)}
@@ -56,6 +56,8 @@ describe Rover do
 		it 'should stay stationary until commands that do not take it off piste' do 
 			rover1.route(poor_instructions)
 			expect(rover1.x).to eq(0)
+			expect(rover1.y).to eq(1)
+			expect(rover1.facing).to eq("S")
 		end
 
 	end
